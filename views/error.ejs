@@ -1,0 +1,15 @@
+<%- include('partials/header', { title: typeof title !== 'undefined' ? title : 'Error' }) %>
+
+<h1><%= message || 'Ocurrió un error' %></h1>
+
+<% if (error && error.status) { %>
+  <h2><%= error.status %></h2>
+<% } %>
+
+<% if (error && error.stack) { %>
+  <pre><%= error.stack %></pre>
+<% } %>
+
+<p><a href="/">Volver al inicio</a></p>
+
+<%- include('partials/footer') %>

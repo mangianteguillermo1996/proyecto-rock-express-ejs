@@ -1,0 +1,24 @@
+<%- include('partials/header', { title: 'Bandas por género' }) %>
+
+<h1>Bandas de <em><%= genero %></em></h1>
+
+<% if (!bandas || bandas.length === 0) { %>
+  <p>No hay bandas con ese género.</p>
+  <p><a href="/">← Volver al listado</a></p>
+<% } else { %>
+  <ul style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;list-style:none;padding:0;">
+    <% bandas.forEach(b => { %>
+      <li style="border:1px solid #ddd;border-radius:12px;overflow:hidden;">
+        <a href="/id/<%= b.id %>" style="text-decoration:none;color:inherit;display:block;">
+          <img src="/<%= b.cover %>" alt="<%= b.nombre %>" style="width:100%;height:160px;object-fit:cover;">
+          <div style="padding:12px;">
+            <h3 style="margin:0;"><%= b.nombre %></h3>
+          </div>
+        </a>
+      </li>
+    <% }) %>
+  </ul>
+  <p><a href="/">← Volver al listado</a></p>
+<% } %>
+
+<%- include('partials/footer') %>

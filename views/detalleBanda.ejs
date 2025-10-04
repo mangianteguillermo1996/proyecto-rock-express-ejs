@@ -1,0 +1,35 @@
+<%- include('partials/header', { title }) %>
+
+<article style="display:grid;grid-template-columns:320px 1fr;gap:24px;align-items:start;">
+  <img src="/<%= banda.cover %>" alt="<%= banda.nombre %>" style="width:100%;border-radius:12px;object-fit:cover;">
+
+  <div>
+    <h1 style="margin-top:0;"><%= banda.nombre %></h1>
+
+    <p>
+      <strong>Género:</strong>
+      <a href="/genero/<%= banda.genero %>"><%= banda.genero %></a>
+    </p>
+
+    <p><strong>Integrantes:</strong> <%= banda.integrantes %></p>
+
+    <% if (banda.topCanciones && banda.topCanciones.length) { %>
+      <h3>Top canciones</h3>
+      <ol>
+        <% banda.topCanciones.forEach(c => { %>
+          <li><%= c %></li>
+        <% }) %>
+      </ol>
+    <% } %>
+
+    <% if (banda.video) { %>
+      <p>
+        <a href="<%= banda.video %>" target="_blank" rel="noreferrer">Ver video en YouTube</a>
+      </p>
+    <% } %>
+
+    <p><a href="/">← Volver al listado</a></p>
+  </div>
+</article>
+
+<%- include('partials/footer') %>

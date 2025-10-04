@@ -1,0 +1,21 @@
+<%- include('partials/header', { title: 'Bandas de música' }) %>
+
+<h1>Bandas de música</h1>
+<ul style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;list-style:none;padding:0;">
+  <% bandas.forEach(b => { %>
+    <li style="border:1px solid #ddd;border-radius:12px;overflow:hidden;">
+      <a href="/id/<%= b.id %>" style="text-decoration:none;color:inherit;display:block;">
+        <img src="/<%= b.cover %>" alt="<%= b.nombre %>" style="width:100%;height:160px;object-fit:cover;">
+        <div style="padding:12px;">
+          <h3 style="margin:0 0 4px;"><%= b.nombre %></h3>
+          <small>
+            Género:
+            <a href="/genero/<%= b.genero %>"><%= b.genero %></a>
+          </small>
+        </div>
+      </a>
+    </li>
+  <% }) %>
+</ul>
+
+<%- include('partials/footer') %>
